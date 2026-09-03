@@ -391,6 +391,187 @@
       margin-top: 14px;
     }
 
+    /* ACTIVE WORKOUT */
+
+    .active-workout {
+      position: relative;
+    }
+
+    .active-header {
+      background:
+        linear-gradient(135deg, rgba(183,255,60,.12), rgba(183,255,60,.02)),
+        var(--card);
+      border: 1px solid rgba(183,255,60,.2);
+      border-radius: 24px;
+      padding: 22px;
+      margin-bottom: 16px;
+    }
+
+    .active-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .active-title {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -.8px;
+    }
+
+    .active-subtitle {
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    .timer {
+      min-width: 105px;
+      text-align: center;
+      background: #090b0a;
+      border: 1px solid rgba(183,255,60,.3);
+      border-radius: 16px;
+      padding: 12px 15px;
+      color: var(--green);
+      font-size: 22px;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .active-exercise {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+
+    .active-exercise-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 18px;
+    }
+
+    .active-exercise-number {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(183,255,60,.1);
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .active-exercise-info {
+      flex: 1;
+    }
+
+    .active-exercise-name {
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .active-exercise-muscle {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .set-header,
+    .set-row {
+      display: grid;
+      grid-template-columns: 55px 1fr 1fr 48px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .set-header {
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 800;
+      padding: 0 8px 8px;
+    }
+
+    .set-row {
+      padding: 9px 8px;
+      border-top: 1px solid var(--border);
+      transition: .2s;
+    }
+
+    .set-row.completed {
+      background: rgba(183,255,60,.055);
+      border-radius: 12px;
+      border-color: rgba(183,255,60,.15);
+    }
+
+    .set-number {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .set-input {
+      width: 100%;
+      background: #0b0d0c;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 11px;
+      padding: 10px;
+      outline: none;
+    }
+
+    .set-input:focus {
+      border-color: var(--green);
+    }
+
+    .set-check {
+      width: 25px;
+      height: 25px;
+      accent-color: var(--green);
+      cursor: pointer;
+      justify-self: center;
+    }
+
+    .active-actions {
+      position: sticky;
+      bottom: 15px;
+      z-index: 20;
+      display: flex;
+      gap: 10px;
+      padding: 12px;
+      margin-top: 20px;
+      background: rgba(8,10,9,.9);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      backdrop-filter: blur(15px);
+    }
+
+    .active-actions button {
+      flex: 1;
+    }
+
+    .start-workout-btn {
+      width: 100%;
+      margin-top: 14px;
+      background: var(--green);
+      color: #0c0f0b;
+      border: 0;
+      border-radius: 14px;
+      padding: 14px;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .start-workout-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+    }
+
     /* INPUTS */
 
     .form-grid {
@@ -586,7 +767,7 @@
       }
     }
 
-    /* BOTTOM NAV MOBILE */
+    /* BOTTOM NAV */
 
     .bottom-nav {
       display: none;
@@ -661,6 +842,33 @@
 
       .field.full {
         grid-column: auto;
+      }
+
+      .active-header-top {
+        flex-direction: column;
+      }
+
+      .timer {
+        width: 100%;
+      }
+
+      .active-exercise {
+        padding: 15px;
+      }
+
+      .set-header,
+      .set-row {
+        grid-template-columns: 38px 1fr 1fr 35px;
+        gap: 6px;
+      }
+
+      .set-input {
+        padding: 9px 7px;
+      }
+
+      .active-actions {
+        bottom: 75px;
+        flex-direction: column;
       }
 
       .bottom-nav {
@@ -857,6 +1065,62 @@
       </div>
 
       <div id="plansContainer"></div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= ACTIVE WORKOUT ================= -->
+
+  <section id="activeWorkout" class="section">
+
+    <div class="active-workout">
+
+      <div class="active-header">
+
+        <div class="active-header-top">
+
+          <div>
+            <div class="eyebrow">TREINO EM ANDAMENTO</div>
+
+            <div class="active-title" id="activeWorkoutName">
+              Treino
+            </div>
+
+            <div class="active-subtitle">
+              Registre suas séries e marque as concluídas.
+            </div>
+          </div>
+
+          <div class="timer" id="workoutTimer">
+            00:00
+          </div>
+
+        </div>
+
+      </div>
+
+      <div id="activeExercises"></div>
+
+      <div class="active-actions">
+
+        <button
+          class="btn btn-secondary"
+          onclick="cancelWorkout()">
+
+          Cancelar treino
+
+        </button>
+
+        <button
+          class="btn btn-primary"
+          onclick="finishWorkout()">
+
+          ✓ Finalizar treino
+
+        </button>
+
+      </div>
 
     </div>
 
@@ -1207,6 +1471,12 @@
 
   let pendingDelete = null;
 
+  /* ================= ACTIVE WORKOUT ================= */
+
+  let activeWorkout = null;
+  let workoutTimerInterval = null;
+  let workoutSeconds = 0;
+
   /* ================= API ================= */
 
   async function api(url, options = {}) {
@@ -1271,7 +1541,12 @@
   }
 
   function today() {
-    return new Date().toISOString().slice(0, 10);
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
   }
 
   /* ================= NAVIGATION ================= */
@@ -1340,6 +1615,10 @@
 
     updateStats();
 
+    if (activeWorkout) {
+      renderActiveWorkout();
+    }
+
   }
 
   /* ================= HOME ================= */
@@ -1374,26 +1653,27 @@
         </div>
       `;
 
-      return;
+    } else {
+
+      const plan = plans[0];
+
+      container.innerHTML = `
+        <div class="workout-title">
+          ${esc(plan.name)}
+        </div>
+
+        <p class="muted" style="margin-top:7px">
+          ${plan.exercicios?.length || 0} exercícios
+        </p>
+
+        <br>
+
+        <button class="btn btn-primary" onclick="startWorkout('${esc(plan.id)}')">
+          ▶ Começar treino
+        </button>
+      `;
+
     }
-
-    const plan = plans[0];
-
-    container.innerHTML = `
-      <div class="workout-title">
-        ${esc(plan.name)}
-      </div>
-
-      <p class="muted" style="margin-top:7px">
-        ${plan.exercicios?.length || 0} exercícios
-      </p>
-
-      <br>
-
-      <button class="btn btn-primary" onclick="showSection('workouts')">
-        Ver treino →
-      </button>
-    `;
 
     const history = state.workoutHistory.slice(0, 3);
 
@@ -1554,6 +1834,20 @@
 
           </button>
 
+          ${
+            exercises.length
+              ? `
+                <button
+                  class="start-workout-btn"
+                  onclick="startWorkout('${esc(plan.id)}')">
+
+                  ▶ Começar treino
+
+                </button>
+              `
+              : ""
+          }
+
         </div>
       `;
 
@@ -1627,6 +1921,380 @@
     `;
   }
 
+  /* ================= START WORKOUT ================= */
+
+  function startWorkout(planId) {
+
+    if (activeWorkout) {
+      toast("Você já tem um treino em andamento.");
+      showSection("activeWorkout");
+      return;
+    }
+
+    const plan = state.plan.find(
+      p => p.id === planId
+    );
+
+    if (!plan) {
+      toast("Treino não encontrado.");
+      return;
+    }
+
+    if (!plan.exercicios?.length) {
+      toast("Adicione exercícios antes de começar.");
+      return;
+    }
+
+    activeWorkout = {
+      planId: plan.id,
+      diaNome: plan.name,
+      exercicios: plan.exercicios.map(ex => ({
+        nome: ex.nome,
+        muscle: ex.muscle,
+        series: Number(ex.series) || 3,
+        repsMeta: ex.reps,
+        sets: Array.from(
+          { length: Number(ex.series) || 3 },
+          (_, index) => ({
+            setNumber: index + 1,
+            reps: "",
+            carga: "",
+            feito: false
+          })
+        )
+      }))
+    };
+
+    workoutSeconds = 0;
+
+    startWorkoutTimer();
+
+    renderActiveWorkout();
+
+    showSection("activeWorkout");
+
+    toast("Treino iniciado! Bora treinar. 💪");
+  }
+
+  function startWorkoutTimer() {
+
+    clearInterval(workoutTimerInterval);
+
+    workoutTimerInterval = setInterval(() => {
+
+      workoutSeconds++;
+
+      updateWorkoutTimer();
+
+    }, 1000);
+
+    updateWorkoutTimer();
+  }
+
+  function updateWorkoutTimer() {
+
+    const element =
+      document.getElementById("workoutTimer");
+
+    if (!element) return;
+
+    const minutes =
+      Math.floor(workoutSeconds / 60);
+
+    const seconds =
+      workoutSeconds % 60;
+
+    element.textContent =
+      `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  }
+
+  function renderActiveWorkout() {
+
+    if (!activeWorkout) return;
+
+    document.getElementById("activeWorkoutName").textContent =
+      activeWorkout.diaNome;
+
+    const container =
+      document.getElementById("activeExercises");
+
+    container.innerHTML =
+      activeWorkout.exercicios.map((exercise, exerciseIndex) => {
+
+        return `
+          <div class="active-exercise">
+
+            <div class="active-exercise-head">
+
+              <div class="active-exercise-number">
+                ${exerciseIndex + 1}
+              </div>
+
+              <div class="active-exercise-info">
+
+                <div class="active-exercise-name">
+                  ${esc(exercise.nome)}
+                </div>
+
+                ${
+                  exercise.muscle
+                    ? `
+                      <div class="active-exercise-muscle">
+                        ${esc(exercise.muscle)}
+                      </div>
+                    `
+                    : ""
+                }
+
+                <div class="muted"
+                     style="font-size:11px;margin-top:5px">
+                  Meta: ${esc(exercise.repsMeta || "—")}
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="set-header">
+              <span>Série</span>
+              <span>Reps</span>
+              <span>Carga</span>
+              <span>OK</span>
+            </div>
+
+            ${
+              exercise.sets.map((set, setIndex) => `
+
+                <div
+                  class="set-row ${set.feito ? "completed" : ""}"
+                  id="set-row-${exerciseIndex}-${setIndex}">
+
+                  <div class="set-number">
+                    ${set.setNumber}
+                  </div>
+
+                  <input
+                    class="set-input"
+                    type="number"
+                    min="0"
+                    placeholder="Reps"
+                    value="${esc(set.reps)}"
+                    onchange="updateLiveSet(${exerciseIndex},${setIndex},'reps',this.value)"
+                  >
+
+                  <input
+                    class="set-input"
+                    type="number"
+                    min="0"
+                    step="0.5"
+                    placeholder="kg"
+                    value="${esc(set.carga)}"
+                    onchange="updateLiveSet(${exerciseIndex},${setIndex},'carga',this.value)"
+                  >
+
+                  <input
+                    class="set-check"
+                    type="checkbox"
+                    ${set.feito ? "checked" : ""}
+                    onchange="toggleLiveSet(${exerciseIndex},${setIndex},this.checked)"
+                  >
+
+                </div>
+
+              `).join("")
+            }
+
+          </div>
+        `;
+
+      }).join("");
+
+    updateWorkoutTimer();
+  }
+
+  function updateLiveSet(
+    exerciseIndex,
+    setIndex,
+    field,
+    value
+  ) {
+
+    if (!activeWorkout) return;
+
+    activeWorkout
+      .exercicios[exerciseIndex]
+      .sets[setIndex][field] = value;
+  }
+
+  function toggleLiveSet(
+    exerciseIndex,
+    setIndex,
+    checked
+  ) {
+
+    if (!activeWorkout) return;
+
+    activeWorkout
+      .exercicios[exerciseIndex]
+      .sets[setIndex]
+      .feito = checked;
+
+    const row =
+      document.getElementById(
+        `set-row-${exerciseIndex}-${setIndex}`
+      );
+
+    if (row) {
+      row.classList.toggle(
+        "completed",
+        checked
+      );
+    }
+  }
+
+  async function finishWorkout() {
+
+    if (!activeWorkout) return;
+
+    const completedSets =
+      activeWorkout.exercicios.reduce(
+        (total, exercise) =>
+          total +
+          exercise.sets.filter(set => set.feito).length,
+        0
+      );
+
+    if (completedSets === 0) {
+
+      toast("Marque pelo menos uma série como concluída.");
+
+      return;
+    }
+
+    clearInterval(workoutTimerInterval);
+
+    const duration =
+      Math.max(
+        1,
+        Math.round(workoutSeconds / 60)
+      );
+
+    const calories =
+      Math.max(
+        20,
+        Math.round(
+          (workoutSeconds / 60) * 5
+        )
+      );
+
+    try {
+
+      state = await api("/api/workouts", {
+        method: "POST",
+
+        body: JSON.stringify({
+
+          data: today(),
+
+          planId:
+            activeWorkout.planId,
+
+          diaNome:
+            activeWorkout.diaNome,
+
+          duration,
+
+          calories,
+
+          exercicios:
+            activeWorkout.exercicios
+
+        })
+
+      });
+
+      activeWorkout = null;
+
+      workoutSeconds = 0;
+
+      clearInterval(workoutTimerInterval);
+
+      renderAll();
+
+      showSection("progress");
+
+      toast(
+        `Treino salvo! ${completedSets} séries concluídas. 🔥`
+      );
+
+    } catch (error) {
+
+      console.error(error);
+
+      startWorkoutTimer();
+
+      toast(
+        "Não foi possível salvar o treino: " +
+        error.message
+      );
+
+    }
+
+  }
+
+  function cancelWorkout() {
+
+    if (!activeWorkout) return;
+
+    document.getElementById("confirmText").textContent =
+      "Seu treino atual será perdido e não será salvo.";
+
+    document.getElementById("confirmButton").textContent =
+      "Cancelar treino";
+
+    document.getElementById("confirmButton").className =
+      "btn btn-danger";
+
+    pendingDelete = () => {
+
+      clearInterval(workoutTimerInterval);
+
+      activeWorkout = null;
+
+      workoutSeconds = 0;
+
+      closeModal("confirmModal");
+
+      document.getElementById("confirmButton").textContent =
+        "Excluir";
+
+      document.getElementById("confirmButton").className =
+        "btn btn-danger";
+
+      showSection("workouts");
+
+      toast("Treino cancelado.");
+
+    };
+
+    document.getElementById("confirmButton").onclick =
+      async () => {
+
+        try {
+
+          await pendingDelete();
+
+        } catch (error) {
+
+          toast(error.message);
+
+        }
+
+      };
+
+    openModal("confirmModal");
+  }
+
   /* ================= PLAN CREATE ================= */
 
   function openPlanModal() {
@@ -1685,6 +2353,12 @@
     document.getElementById("confirmText").textContent =
       `O treino "${name}" e seus exercícios serão excluídos.`;
 
+    document.getElementById("confirmButton").textContent =
+      "Excluir";
+
+    document.getElementById("confirmButton").className =
+      "btn btn-danger";
+
     pendingDelete = async () => {
 
       state = await api(`/api/plans/${encodeURIComponent(id)}`, {
@@ -1721,6 +2395,12 @@
 
     document.getElementById("confirmText").textContent =
       `O exercício "${name}" será removido do treino.`;
+
+    document.getElementById("confirmButton").textContent =
+      "Excluir";
+
+    document.getElementById("confirmButton").className =
+      "btn btn-danger";
 
     pendingDelete = async () => {
 
@@ -2079,64 +2759,65 @@
         </div>
       `;
 
-      return;
-    }
+    } else {
 
-    const first =
-      Number(logs[0].peso);
+      const first =
+        Number(logs[0].peso);
 
-    const last =
-      Number(logs[logs.length - 1].peso);
+      const last =
+        Number(logs[logs.length - 1].peso);
 
-    const difference =
-      last - first;
+      const difference =
+        last - first;
 
-    container.innerHTML = `
+      container.innerHTML = `
 
-      <div class="progress-box">
+        <div class="progress-box">
 
-        <div class="muted">
-          PESO ATUAL
+          <div class="muted">
+            PESO ATUAL
+          </div>
+
+          <div class="progress-number">
+            ${last.toFixed(1)} kg
+          </div>
+
+          <div class="muted">
+            ${
+              difference > 0
+                ? `+${difference.toFixed(1)} kg desde o primeiro registro`
+                : difference < 0
+                  ? `${difference.toFixed(1)} kg desde o primeiro registro`
+                  : "Sem alteração desde o primeiro registro"
+            }
+          </div>
+
         </div>
 
-        <div class="progress-number">
-          ${last.toFixed(1)} kg
-        </div>
+        <div class="weight-list">
 
-        <div class="muted">
           ${
-            difference > 0
-              ? `+${difference.toFixed(1)} kg desde o primeiro registro`
-              : difference < 0
-                ? `${difference.toFixed(1)} kg desde o primeiro registro`
-                : "Sem alteração desde o primeiro registro"
+            [...logs].reverse().map(log => `
+
+              <div class="weight-row">
+
+                <span>
+                  ${esc(log.data)}
+                </span>
+
+                <strong>
+                  ${Number(log.peso).toFixed(1)} kg
+                </strong>
+
+              </div>
+
+            `).join("")
           }
+
         </div>
+      `;
 
-      </div>
-
-      <div class="weight-list">
-
-        ${
-          [...logs].reverse().map(log => `
-
-            <div class="weight-row">
-
-              <span>
-                ${esc(log.data)}
-              </span>
-
-              <strong>
-                ${Number(log.peso).toFixed(1)} kg
-              </strong>
-
-            </div>
-
-          `).join("")
-        }
-
-      </div>
-    `;
+    }
 
   }
 
