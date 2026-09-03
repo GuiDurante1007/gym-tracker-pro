@@ -2,10 +2,16 @@ const express = require('express');
 const cors = require('cors');
 const Database = require('better-sqlite3');
 const path = require('path');
+const fs = require('fs');
+
+const dataDir = path.join(__dirname, 'data');
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const db = new Database(path.join(__dirname, 'data', 'gym-tracker.db'));
+const db = new Database(path.join(dataDir, 'gym-tracker.db'));
 db.pragma('journal_mode = WAL');
 app.use(cors());
 app.use(express.json({ limit: '1mb' }));
