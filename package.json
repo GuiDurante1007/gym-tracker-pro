@@ -1,0 +1,8 @@
+{
+  "name": "gym-tracker-pro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gym Tracker com frontend, API Express e SQLite",
+  "scripts": {"start":"node server.js"},
+  "dependencies": {"better-sqlite3":"^11.10.0","cors":"^2.8.5","express":"^5.1.0"}
+}
