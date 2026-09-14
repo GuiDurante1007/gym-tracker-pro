@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const { Pool } = require('pg');
 const path = require('path');
 const fs = require('fs');
+const { Pool } = require('pg');
 
 
 const dataDir = path.join(__dirname, 'data');
@@ -41,6 +41,7 @@ app.use(
 async function initDatabase() {
 
   await pool.query(`
+
     CREATE TABLE IF NOT EXISTS profile (
       id INTEGER PRIMARY KEY CHECK(id=1),
       name TEXT,
@@ -54,7 +55,7 @@ async function initDatabase() {
     CREATE TABLE IF NOT EXISTS workout_plans (
       id TEXT PRIMARY KEY,
       name TEXT NOT NULL,
-      sort_order INTEGER DEFAULT 0
+      sort_order BIGINT DEFAULT 0
     );
 
     CREATE TABLE IF NOT EXISTS exercises (
@@ -101,6 +102,11 @@ async function initDatabase() {
         ON DELETE CASCADE
     );
   `);
+  
+await pool.query(`
+  ALTER TABLE workout_plans
+  ALTER COLUMN sort_order TYPE BIGINT
+`);
 
   await seedLibrary();
 
