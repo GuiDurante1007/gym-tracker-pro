@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const fs = require('fs');
 const { Pool } = require('pg');
 
 
@@ -102,7 +101,7 @@ async function initDatabase() {
         ON DELETE CASCADE
     );
   `);
-  
+
 await pool.query(`
   ALTER TABLE workout_plans
   ALTER COLUMN sort_order TYPE BIGINT
