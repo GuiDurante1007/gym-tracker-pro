@@ -1346,7 +1346,10 @@
 
     <div class="field">
       <label>Exercício</label>
-      <input id="selectedExerciseName" readonly>
+      <input 
+          id= "selectedExerciseName" 
+          placeholder="Ex: elevação pelvica"
+    >
     </div>
 
     <br>
@@ -2471,14 +2474,49 @@
 
       if (!exercises.length) {
 
-        container.innerHTML = `
-          <div class="empty">
-            Nenhum exercício encontrado.
-          </div>
-        `;
+  if (query.trim()) {
 
-        return;
-      }
+    container.innerHTML = `
+      <div
+        class="suggestion"
+        data-custom-exercise="${esc(query.trim())}"
+        onclick="selectCustomExercise(this.dataset.customExercise)"
+      >
+
+        <div>
+
+          <strong>
+            + Usar "${esc(query.trim())}"
+          </strong>
+
+          <div
+            class="muted"
+            style="font-size:11px;margin-top:4px"
+          >
+            Adicionar exercício personalizado
+          </div>
+
+        </div>
+
+        <span style="color:var(--green)">
+          +
+        </span>
+
+      </div>
+    `;
+
+  } else {
+
+    container.innerHTML = `
+      <div class="empty">
+        Nenhum exercício encontrado.
+      </div>
+    `;
+
+  }
+
+  return;
+}
 
       container.innerHTML =
         exercises.map(ex => `
@@ -2539,6 +2577,20 @@
     openModal("addExerciseModal");
 
   }
+
+  function selectCustomExercise(name) {
+
+      document.getElementById("selectedExerciseName").value =
+        name;
+
+      document.getElementById("exerciseSets").value = 3;
+
+      document.getElementById("exerciseReps").value = "8–12";
+
+      document.getElementById("exerciseLoad").value = "";
+
+      openModal("addExerciseModal");
+}
 
   async function addExercise() {
 
